@@ -1,0 +1,67 @@
+<h2>TODO List</h2>
+<table>  
+  <tr>
+    <th>Fällig</th>
+    <th>erl.</th>
+    <th>Aufgabe</th>
+    <th><button class="btn btn-xs btn-success" (click)="show()"><i class="glyphicon glyphicon-plus"></i></button></th>
+  </tr>
+  <tr *ngIf="showNew">
+    <td>
+      <input [(ngModel)]="newTodo.due_date" value="{{newTodo.due_date}}" type="date" placeholder="Due Date">
+    </td>
+    <td>
+      <input type="checkbox" [(ngModel)]="newTodo.done" />
+    </td>
+    <td>
+      <input [(ngModel)]="newTodo.subject" type="text" placeholder="Description" />
+    </td>
+    <td>
+      <button class="btn btn-xs btn-success" (click)="add()" 
+        [disabled]="!newTodo.subject || newTodo.subject.length < 3 || checkDate(newTodo.due_date)">
+        <i class="glyphicon glyphicon-ok"></i>
+      </button>
+    </td>
+  </tr>
+
+  <tr *ngFor="let todo of todos">
+    <td>
+      <div *ngIf="editTodo.id !== todo.id; else elseDueDate">{{todo.due_date | date:"dd.MM.y"}}</div>      
+      <ng-template #elseDueDate>
+        <input [(ngModel)]="editTodo.due_date" type="date" placeholder="Due Date" [disabled]="editTodo.done" />
+      </ng-template>      
+    </td>
+    <td>
+      <div *ngIf="editTodo.id !== todo.id; else elseDone">
+        <input type="checkbox" [(ngModel)]="todo.done" [disabled]="todo.done"/>
+      </div>      
+      <ng-template #elseDone>
+        <input type="checkbox" [(ngModel)]="editTodo.done" />
+      </ng-template>
+    </td>
+    <td>
+      <div *ngIf="editTodo.id !== todo.id; else elseSubject">
+        {{todo.subject}}
+      </div>
+      <ng-template #elseSubject>
+        <input [(ngModel)]="editTodo.subject" placeholder="Description" [disabled]="editTodo.done" />
+      </ng-template>
+    </td>
+    <td>
+      <div *ngIf="editTodo.id !== todo.id; else elseAction">
+        <button class="btn btn-xs btn-danger" (click)="delete(todo.id)">
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
+        <button class="btn btn-xs btn-default" (click)="edit(todo)">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </button>
+      </div>
+      <ng-template #elseAction>
+        <button class="btn btn-xs btn-default" (click)="save(todo)" 
+          [disabled]="editTodo.subject.length < 3 || checkDate(editTodo.due_date)">
+          <i class="glyphicon glyphicon-ok"></i>
+        </button>
+      </ng-template>
+    </td>
+  </tr>
+</table>

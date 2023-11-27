@@ -1,0 +1,33 @@
+<h1>
+    {{title}}
+</h1>
+
+<div class="container">
+
+    <div class="result">
+        {{ result }}
+    </div>
+
+    <div class="field">
+        <button (click)="addNum('7')">7</button>
+        <button (click)="addNum('8')">8</button>
+        <button (click)="addNum('9')">9</button>
+        <button (click)="calculate('/')">/</button>
+
+        <button (click)="addNum('4')">4</button>
+        <button (click)="addNum('5')">5</button>
+        <button (click)="addNum('6')">6</button>
+        <button (click)="calc('*')">X</button>
+
+        <button (click)="addNum('1')">1</button>
+        <button (click)="addNum('2')">2</button>
+        <button (click)="addNum('3')">3</button>
+        <button (click)="calc('-')">-</button>
+
+        <button (click)="addNum('0')">0</button>
+        <button (click)="addNum('.')">.</button>
+        <button (click)="equal()">=</button>
+        <button (click)="calc('+')">+</button>
+    </div>
+
+</div>

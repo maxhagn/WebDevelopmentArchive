@@ -1,0 +1,84 @@
+body {
+    min-height: 100%;
+    min-height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #455A64;
+    padding-top: 65px;
+}
+
+.navbtn {
+    margin: -10px auto;
+    padding: 6px 6px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.container-div {
+    padding: 20px;
+    min-height: 400px;
+    background-color: #FAFAFA;
+}
+.row{
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 7px;
+  font-size: 15px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.registrierungsbutton{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#registerbtn{
+    margin-top: 6px;
+}
+
+#loginbtn{
+    margin-top: 6px;
+}
+
+.foto_gruppe{
+    width: 50%;
+    padding: 20px;
+    min-width: 300px;
+}

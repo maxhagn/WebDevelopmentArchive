@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: "Helvetica Neue";
+    color: #888888;
+}
+
+button {
+    font-size: 50px;
+    width: 75px;
+    margin: 5px;
+    background-color: #ddd;
+    border-radius: 1rem;
+}
+
+.container {
+    background-color: #888;
+    width: 380px;
+    height: 410px;
+    border: solid 1px #000;
+}
+
+.field {
+    display: block;
+    padding-left: 13px;
+}
+
+.result {
+    margin: 10px;
+    width: 355px;
+    height: 75px;
+    background-color: white;
+    text-align: left;
+    font-size: 55px;
+}

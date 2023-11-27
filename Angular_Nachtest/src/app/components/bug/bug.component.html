@@ -1,0 +1,97 @@
+<nav class='navbar navbar-default'>
+    <div class='container-fluid'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse'
+                    data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' href='#'>Bugtracker</a>
+        </div>
+
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+            <ul class='nav navbar-nav'>
+                <li><a href='/app'>Liste der Bugs</a></li>
+                <li><a href='/'>Info zur App</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class='col-md-8 col-md-offset-2'>
+    <div class='panel panel-default'>
+        <!-- Default panel contents -->
+        <div class='panel-heading'>
+            <nav>
+                <ul class='pager'>
+                    <button class='btn btn-default' [disabled]='pageCounter == 0' (click)='prev()'>Vor</button>
+                    <li>Bugs {{pageCounter * 5 +1}} bis {{maxBugs}} von {{anzBugs}}</li>
+                    <button class='btn btn-default' [disabled]='pageCounter+1 == maxPages' (click)='next()'>Weiter</button>
+                </ul>
+            </nav>
+            <a *ngIf='!showForm' (click)='addNew()' class='btn btn-primary pull-right'><i
+                    class='glyphicon glyphicon-plus'></i>&nbsp;Neuer Bug</a>
+        </div>
+
+        <div class='panel-body' *ngIf='showForm'>
+            <form class='form-horizontal'>
+                <div class='form-group'>
+                    <label class='col-sm-2 control-label'>Kurzbezeichnung</label>
+                    <div class='col-sm-4'>
+                        <input type='text' class='form-control' name='shortDes' [(ngModel)]='newShortDes'>
+                    </div>
+                    <label class='col-sm-2 control-label'>Ersteller</label>
+                    <div class='col-sm-4'>
+                        <input type='text' class='form-control' name='creator' [(ngModel)]='newCreator'>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-sm-2 control-label'>Status</label>
+                    <div class='col-sm-4'>
+                        <input type='text' class='form-control' name='status' [(ngModel)]='newStatus'>
+                    </div>
+                    <label class='col-sm-2 control-label'>Priorität</label>
+                    <div class='col-sm-4'>
+                        <input type='text' class='form-control' name='priority' [(ngModel)]='newPriority'>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-sm-2 control-label'>Beschreibung</label>
+                    <div class='col-sm-10'>
+                            <textarea class='form-control' name='longDes' [(ngModel)]='newLongDes'>
+                            </textarea>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <div class='col-sm-offset-2 col-sm-10'>
+                        <button type='button' class='btn btn-success'
+                                [disabled]='newCreator.length < 3 || newCreator.length > 50 || newShortDes.length < 5 || newShortDes.length > 100 || newLongDes.length < 1 || newPriority < 1 || newPriority > 5 || newPriority.length !== 1'
+                                (click)='saveNew()'><i class='glyphicon glyphicon-floppy-disk'></i>&nbsp; Eintragen
+                        </button>
+                        <button type='button' class='btn btn-default' (click)='breakNew()'><i
+                                class='glyphicon glyphicon-remove'></i>&nbsp; Abbrechen
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <ul class='list-group'>
+            <li class='list-group-item' *ngFor='let bug of pageBugs'>
+                <h4 class='list-group-item-heading'>Prio {{bug.priority}}: {{bug.shortDes}}</h4>
+                <span class='label label-danger' *ngIf="bug.status !== 'Closed'">{{bug.status}}</span>
+                <span class='label label-success' *ngIf="bug.status == 'Closed'">{{bug.status}}</span>
+                <button class='btn btn-xs btn-success pull-right' *ngIf="bug.status !== 'Closed'" (click)="markDone(bug)"><i class='glyphicon glyphicon-ok'></i></button>
+
+                <button class='btn btn-xs btn-default pull-right' *ngIf='!bug.showLong' (click)='toggleLongDes(bug)'><i class='glyphicon glyphicon-chevron-down'></i></button>
+                <button class='btn btn-xs btn-default pull-right' *ngIf='bug.showLong' (click)='toggleLongDes(bug)'><i class='glyphicon glyphicon-chevron-up'></i></button>
+                <p class='list-group-item-text'>#{{Bugs.indexOf(bug) +1}} opened on {{formatDate(bug.Date)}} by {{bug.creator}}</p>
+                <p class='list-group-item-text' *ngIf='bug.showLong'>{{bug.longDes}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+export const mockTasks: any = [
+    {Date: new Date(2017, 1, 12, 13, 15), done: true, content: 'SEW lernen', edit: false},
+    {Date: new Date(2018, 1, 12, 13, 15), done: false, content: 'Mathe lernen', edit: false},
+    {Date: new Date(2019, 1, 12, 13, 15), done: false, content: 'Chemie lernen', edit: false},
+    {Date: new Date(2020, 1, 12, 13, 15), done: false, content: 'Bio lernen', edit: false},
+    {Date: new Date(2032, 1, 12, 13, 15), done: true, content: 'Englisch lernen', edit: false},
+    {Date: new Date(2012, 1, 12, 13, 15), done: false, content: 'Deutsch lernen', edit: false},
+    {Date: new Date(2019, 1, 12, 13, 15), done: false, content: 'Physik lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: false, content: 'Medientechnik lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: true, content: 'Foto Labor lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: false, content: 'Datenbanken lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: true, content: 'Audio lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: false, content: 'Geschichte lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: false, content: 'Geografie lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: false, content: 'Turnen lernen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: false, content: 'Trainieren', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: true, content: 'Zimmer aufräumen', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: true, content: 'Deutsch', edit: false},
+    {Date: new Date(2017, 1, 12, 13, 15), done: false, content: 'Schweißen lernen', edit: false},
+
+];

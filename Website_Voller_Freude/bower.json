@@ -1,0 +1,30 @@
+{
+  "name": "Voller Freude",
+  "authors": [
+    "Maximilian Hagn <maximilian.hagn@gmail.com> (http://creative-puzzle.com)"
+  ],
+  "description": "Record Lable based in Vienna",
+  "main": [
+  	"index.html",
+  	"main.js"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "keywords": [
+    "none"
+  ],
+  "license": "MIT",
+  "homepage": "https://google.com",
+  "repository": {
+  	"type": "git",
+  	"url": "git://github.com/foo/bar.git"
+  },
+  "ignore": [
+  ],
+  "private": false
+}

@@ -1,0 +1,49 @@
+h4 {
+  display: inline-block;
+}
+
+.pager {
+  display: inline-block;
+  margin: auto;
+}
+
+.panel-heading nav {
+  display: inline-block;
+}
+
+.pager li>a, .pager li>span {
+  border-radius: 5px;
+}
+
+.status {
+  width: 210px;
+  display: inline-block;
+}
+
+.panel-heading .detail {
+  width: 300px;
+  display: inline-block;
+}
+
+.list-group .list-group-item span {
+  margin-right: 5px;
+}
+
+.list-group .list-group-item label {
+  margin-top: 10px;
+}
+
+.attachments {
+  padding-left: 0;
+}
+
+.attachments li {
+  list-style-type: none;
+  display: inline-block;
+}
+.attachments li a i {
+  font-size: 24px;
+}
+.list-group .list-group-item .btn {
+  margin-left: 5px;
+}

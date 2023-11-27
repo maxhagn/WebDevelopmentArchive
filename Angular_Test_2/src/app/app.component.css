@@ -1,0 +1,24 @@
+body {
+  padding-top: 20px;
+}
+h3 {
+  margin: 0;
+  width: 200px;
+  display: inline-block;
+  float: left;
+  line-height: 39px;
+}
+
+.panel-heading {
+  height: 50px;
+  line-height: 38px;
+  padding-top: 5px;
+}
+
+.navbar-form {
+  margin-top: 0;
+}
+
+.navbar-form select.form-control {
+  width: 200px;
+}

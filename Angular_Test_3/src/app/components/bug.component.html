@@ -1,0 +1,109 @@
+<!-- Navigation Bar with Angular 2 routing -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- Click on Bugtracker -> About page at Path ('/') -->
+      <a class="navbar-brand" href="#">Bugtracker</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- Click on Liste der Bugs -> App page at Path ('/app') -> starts the BugComponent -->
+        <li><a href="app">Liste der Bugs</a></li>
+        <!-- Click on Info zur App-> About page at Path ('/') -->
+        <li><a href="/">Info zur App</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <!-- Show count of bugs via Data Binning -->
+      <span class="status"><i class="glyphicon glyphicon-alert"></i>&nbsp;{{anzBugs}} Bugs gesamt</span>
+      <nav>
+        <!-- Pager | Disable if first or last site -> Call functions on click -->
+        <ul class="pager">
+          <li><button (click)="prev()" [disabled]="pageCounter == 0" class="btn btn-primary">Vor</button></li>
+          <li>Seite {{pageCounter+1}} von {{maxPages}}</li>
+          <li><button (click)="next()" [disabled]="pageCounter +1 == maxPages" class="btn btn-primary">Weiter</button></li>
+        </ul>
+      </nav>
+      <!-- Starts addNew() function to show the form -->
+      <button (click)="addNew()" type="submit" class="btn btn-primary pull-right"><i
+        class="glyphicon glyphicon-plus"></i>&nbsp;Neuer
+        Bug
+      </button>
+    </div>
+
+    <!-- Form for new Bug -> normally hidden -->
+    <div class="panel-body" *ngIf="showForm">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Ersteller</label>
+          <div class="col-sm-10">
+            <!-- ngModel gives newCreator variable -->
+            <input type="text" class="form-control" name='creator' [(ngModel)]='newCreator'>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Kurzbezeichnung</label>
+          <div class="col-sm-10">
+            <!-- ngModel gives newShortDes variable -->
+            <input type="text" class="form-control" name='shortDes' [(ngModel)]='newShortDes'>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Beschreibung</label>
+          <div class="col-sm-10">
+            <!-- ngModel gives newLongDes variable -->
+            <textarea class="form-control" name='longDes' [(ngModel)]='newLongDes'></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <!-- Eintrag Button disabled if not equal criteria | Call function saveBug() to save Bugs to Array -->
+            <button [disabled]="newCreator.length < 3 || newCreator.length > 50 || newShortDes.length < 5 || newShortDes.length > 100 || newLongDes.length < 1" (click)="saveBug()" type="button" class="btn btn-success"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;
+              Eintragen
+            </button>
+            <!-- call clearForm() function to clear and close the form -->
+            <button (click)="clearForm()" type="button" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i>&nbsp;
+              Abbrechen
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Output the bugs -->
+    <ul class="list-group">
+      <!-- ngFor to repeat for each entry -->
+      <li class="list-group-item" *ngFor="let bugs of pageBugs">
+        <!-- Show shortDes via data binning -->
+        <h4 class="list-group-item-heading">{{bugs.shortDes}}</h4>
+        <!-- Show status via data binning, color depends on statusName, if closed -> green label -->
+        <span class="label label-danger" *ngIf="bugs.status !== 'Closed'">{{bugs.status}}</span>
+        <span class="label label-success" *ngIf="bugs.status == 'Closed'">{{bugs.status}}</span>
+
+        <!-- Buttons beside bugs | Mark Bug as closed, disabled if closed  -->
+        <button class="btn btn-xs btn-success pull-right" *ngIf="bugs.status !== 'Closed'" (click)="done(bugs)"><i class="glyphicon glyphicon-ok"></i></button>
+        <!-- hide and show picture change depends on showLong = true or false -->
+        <button class="btn btn-xs btn-default pull-right" *ngIf="!bugs.showLong" (click)="showAll(bugs)"><i class="glyphicon glyphicon-chevron-down"></i></button>
+        <button class="btn btn-xs btn-default pull-right" *ngIf="bugs.showLong" (click)="hideAll(bugs)"><i class="glyphicon glyphicon-chevron-up"></i></button>
+
+        <!-- Show bugNumber and bugs.date and bugs.creator via data binning | formatDate formats the Date to the austrian format -->
+        <p class="list-group-item-text">#{{Bugs.indexOf(bugs) +1 }} opened on {{formatDate(bugs.Date)}} by {{bugs.creator}}</p>
+        <!-- Show longDes via data binning if showLong = true -->
+        <p class="list-group-item-text" *ngIf="bugs.showLong">{{bugs.longDes}}</p>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+body {
+  width: 80%;
+  margin: auto;
+  position: relative;
+}
+table, th, td {
+  border: 0px solid black;
+  border-collapse: collapse;
+  text-align: left;
+}
+table {
+/*  width: 100%; */
+}
+th, td {
+  padding: 15px;
+}
+table tr:nth-child(odd) {
+  background-color:WhiteSmoke;
+}
+table tr:nth-child(even) {
+  background-color:White;
+}
+th.title {
+  letter-spacing: 0.2em;
+  font-size:larger;
+  font-weight:normal;
+}

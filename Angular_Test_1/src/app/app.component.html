@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+
+    <div class="textField">
+        <textarea> {{nums}} </textarea>
+    </div>
+
+    <table>
+
+        <tr>
+            <button (click)="printNum(1)">1</button>
+            <button (click)="printNum(2)">2</button>
+            <button (click)="printNum(3)">3</button>
+        </tr>
+
+        <tr>
+            <button (click)="printNum(4)">4</button>
+            <button (click)="printNum(5)">5</button>
+            <button (click)="printNum(6)">6</button>
+        </tr>
+
+        <tr>
+            <button (click)="printNum(7)">7</button>
+            <button (click)="printNum(8)">8</button>
+            <button (click)="printNum(9)">9</button>
+        </tr>
+
+        <tr>
+            <button (click)="triggerLock()">#</button>
+            <button (click)="printNum(0)">0</button>
+            <button (click)="triggerClear()">*</button>
+        </tr>
+
+    </table>
+
+</div>
+</body>
+</html>
